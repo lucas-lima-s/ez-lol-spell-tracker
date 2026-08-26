@@ -11,3 +11,5 @@ __pycache__/
 .vscode/
 build/
 dist/
+.venv/
+.ruff_cache/
