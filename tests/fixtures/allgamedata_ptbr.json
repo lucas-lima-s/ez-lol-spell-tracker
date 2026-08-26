@@ -1,0 +1,134 @@
+{
+  "activePlayer": {
+    "riotId": "Summoner#NA1",
+    "summonerName": "Summoner",
+    "level": 1
+  },
+  "allPlayers": [
+    {
+      "riotId": "Summoner#NA1",
+      "riotIdGameName": "Summoner",
+      "riotIdTagLine": "NA1",
+      "summonerName": "Summoner",
+      "championName": "Yasuo",
+      "rawChampionName": "game_character_displayname_Yasuo",
+      "team": "ORDER",
+      "isBot": false,
+      "summonerSpells": {
+        "summonerSpellOne": {
+          "displayName": "Flash",
+          "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerFlash_DisplayName"
+        },
+        "summonerSpellTwo": {
+          "displayName": "Incendiar",
+          "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerDot_DisplayName"
+        }
+      }
+    },
+    {
+      "riotId": "Fiddle Bot#BOT",
+      "riotIdGameName": "Fiddle Bot",
+      "riotIdTagLine": "BOT",
+      "summonerName": "Fiddle Bot",
+      "championName": "Fiddlesticks",
+      "rawChampionName": "game_character_displayname_FiddleSticks",
+      "team": "CHAOS",
+      "isBot": true,
+      "level": 12,
+      "items": [
+        {"itemID": 3158, "displayName": "Botas Ionianas da Lucidez"},
+        {"itemID": 1052, "displayName": "Tomo Amplificador"}
+      ],
+      "summonerSpells": {
+        "summonerSpellOne": {
+          "displayName": "Flash",
+          "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerFlash_DisplayName"
+        },
+        "summonerSpellTwo": {
+          "displayName": "Incendiar",
+          "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerDot_DisplayName"
+        }
+      }
+    },
+    {
+      "riotId": "Wukong Bot#BOT",
+      "riotIdGameName": "Wukong Bot",
+      "riotIdTagLine": "BOT",
+      "summonerName": "Wukong Bot",
+      "championName": "Wukong",
+      "rawChampionName": "game_character_displayname_MonkeyKing",
+      "team": "CHAOS",
+      "isBot": true,
+      "summonerSpells": {
+        "summonerSpellOne": {
+          "displayName": "Teleporte Liberado",
+          "rawDisplayName": "GeneratedTip_SummonerSpell_S12_SummonerTeleportUpgrade_DisplayName"
+        },
+        "summonerSpellTwo": {
+          "displayName": "Golpear",
+          "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerSmite_DisplayName"
+        }
+      }
+    },
+    {
+      "riotId": "Ziggs Bot#BOT",
+      "riotIdGameName": "Ziggs Bot",
+      "riotIdTagLine": "BOT",
+      "summonerName": "Ziggs Bot",
+      "championName": "Ziggs",
+      "rawChampionName": "game_character_displayname_Ziggs",
+      "team": "CHAOS",
+      "isBot": true,
+      "summonerSpells": {
+        "summonerSpellOne": {
+          "displayName": "Hextrocesso",
+          "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerFlashPerksHextechFlashtraptionV2_DisplayName"
+        },
+        "summonerSpellTwo": {
+          "displayName": "Curar",
+          "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerHeal_DisplayName"
+        }
+      }
+    },
+    {
+      "riotId": "Sett Bot#BOT",
+      "riotIdGameName": "Sett Bot",
+      "riotIdTagLine": "BOT",
+      "summonerName": "Sett Bot",
+      "championName": "Sett",
+      "rawChampionName": "game_character_displayname_Sett",
+      "team": "CHAOS",
+      "isBot": true,
+      "summonerSpells": {
+        "summonerSpellOne": {
+          "displayName": "Fantasma",
+          "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerHaste_DisplayName"
+        },
+        "summonerSpellTwo": {
+          "displayName": "Exaustão",
+          "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerExhaust_DisplayName"
+        }
+      }
+    },
+    {
+      "riotId": "Brand Bot#BOT",
+      "riotIdGameName": "Brand Bot",
+      "riotIdTagLine": "BOT",
+      "summonerName": "Brand Bot",
+      "championName": "Brand",
+      "rawChampionName": "game_character_displayname_Brand",
+      "team": "CHAOS",
+      "isBot": true,
+      "summonerSpells": {
+        "summonerSpellOne": {
+          "displayName": "Barreira",
+          "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerBarrier_DisplayName"
+        },
+        "summonerSpellTwo": {
+          "displayName": "Magia Nova",
+          "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerWeirdNew_DisplayName"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "version": "16.12.1",
+  "data": {
+    "SummonerFlash": {
+      "id": "SummonerFlash",
+      "name": "Flash",
+      "cooldown": [300],
+      "image": {"full": "SummonerFlash.png"}
+    },
+    "SummonerDot": {
+      "id": "SummonerDot",
+      "name": "Incendiar",
+      "cooldown": [180],
+      "image": {"full": "SummonerDot.png"}
+    },
+    "SummonerTeleport": {
+      "id": "SummonerTeleport",
+      "name": "Teleporte",
+      "cooldown": [300],
+      "image": {"full": "SummonerTeleport.png"}
+    },
+    "SummonerSmite": {
+      "id": "SummonerSmite",
+      "name": "Golpear",
+      "cooldown": [15],
+      "image": {"full": "SummonerSmite.png"}
+    },
+    "SummonerHaste": {
+      "id": "SummonerHaste",
+      "name": "Fantasma",
+      "cooldown": [240],
+      "image": {"full": "SummonerHaste.png"}
+    },
+    "SummonerHeal": {
+      "id": "SummonerHeal",
+      "name": "Curar",
+      "cooldown": [240],
+      "image": {"full": "SummonerHeal.png"}
+    },
+    "SummonerExhaust": {
+      "id": "SummonerExhaust",
+      "name": "Exaustão",
+      "cooldown": [240],
+      "image": {"full": "SummonerExhaust.png"}
+    },
+    "SummonerBarrier": {
+      "id": "SummonerBarrier",
+      "name": "Barreira",
+      "cooldown": [180],
+      "image": {"full": "SummonerBarrier.png"}
+    }
+  }
+}

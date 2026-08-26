@@ -1,0 +1,16 @@
+{
+  "version": "16.12.1",
+  "data": {
+    "Annie": {"name": "Annie", "key": "1"},
+    "Ahri": {"name": "Ahri", "key": "103"},
+    "Garen": {"name": "Garen", "key": "86"},
+    "Lux": {"name": "Lux", "key": "99"},
+    "Teemo": {"name": "Teemo", "key": "17"},
+    "Fiddlesticks": {"name": "Fiddlesticks", "key": "9"},
+    "MonkeyKing": {"name": "Wukong", "key": "62"},
+    "Ziggs": {"name": "Ziggs", "key": "115"},
+    "Sett": {"name": "Sett", "key": "875"},
+    "Brand": {"name": "Brand", "key": "63"},
+    "Yasuo": {"name": "Yasuo", "key": "157"}
+  }
+}

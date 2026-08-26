@@ -1,0 +1,13 @@
+lib/
+logs/
+config/settings.json
+config/*.bak
+config/*.tmp
+__pycache__/
+*.pyc
+*.part
+.pytest_cache/
+.idea/
+.vscode/
+build/
+dist/
