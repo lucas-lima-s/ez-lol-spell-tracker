@@ -13,3 +13,5 @@ build/
 dist/
 .venv/
 .ruff_cache/
+*.spec
+docs/*.tmp.png
