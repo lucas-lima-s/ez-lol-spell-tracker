@@ -1,0 +1,36 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - name: Sync dependencies
+        run: uv sync --group dev --frozen
+
+      - name: Build with PyInstaller
+        run: >
+          uv run pyinstaller --noconfirm --clean --onedir --noconsole
+          --name EzSpellTracker --paths . --specpath build --workpath build
+          --distpath dist src/main.py
+
+      - name: Copy assets next to the executable
+        run: Copy-Item -Path assets -Destination dist/EzSpellTracker/assets -Recurse
+
+      - name: Create release archive
+        run: Compress-Archive -Path dist/EzSpellTracker -DestinationPath ez-spell-tracker-${{ github.ref_name }}-win64.zip
+
+      - name: Publish release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ez-spell-tracker-${{ github.ref_name }}-win64.zip
