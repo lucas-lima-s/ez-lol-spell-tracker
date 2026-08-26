@@ -1,3 +1,4 @@
+import contextlib
 import ctypes
 import ctypes.wintypes
 import logging
@@ -98,8 +99,6 @@ class GlobalHotkey(QObject):
     def unregister(self) -> None:
         if not self._registered:
             return
-        try:
+        with contextlib.suppress(Exception):
             ctypes.windll.user32.UnregisterHotKey(None, HOTKEY_ID)
-        except Exception:
-            pass
         self._registered = False

@@ -53,9 +53,7 @@ def _load_static_data(lang: str) -> StaticData:
 
 def _on_assets_updated(version: str, downloaded: int, failures: int) -> None:
     if failures:
-        logger.warning(
-            "Asset update for %s incomplete (%d failures)", version, failures
-        )
+        logger.warning("Asset update for %s incomplete (%d failures)", version, failures)
     elif downloaded:
         logger.info("Assets updated to %s (%d files)", version, downloaded)
     else:
@@ -96,9 +94,7 @@ def main() -> int:
     app.setQuitOnLastWindowClosed(False)
     if not QSystemTrayIcon.isSystemTrayAvailable():
         logger.error("System tray unavailable, cannot start")
-        QMessageBox.critical(
-            None, tr("error.no_tray.title"), tr("error.no_tray.text")
-        )
+        QMessageBox.critical(None, tr("error.no_tray.title"), tr("error.no_tray.text"))
         return 1
     lang = str(config.get("language") or "pt-BR").replace("-", "_")
     try:
@@ -107,9 +103,7 @@ def main() -> int:
         watcher = GameWatcher(static=static)
     except Exception:
         logger.exception("Failed to initialize overlay and game watcher")
-        QMessageBox.critical(
-            None, tr("error.startup.title"), tr("error.startup.text")
-        )
+        QMessageBox.critical(None, tr("error.startup.title"), tr("error.startup.text"))
         return 1
     tray = TrayIcon(config, controller)
     tray.show()
@@ -124,9 +118,7 @@ def main() -> int:
     updater.finished_update.connect(_on_assets_updated)
     updater.start()
     update_timer = QTimer()
-    update_timer.timeout.connect(
-        lambda: updater.start() if not updater.isRunning() else None
-    )
+    update_timer.timeout.connect(lambda: updater.start() if not updater.isRunning() else None)
     update_timer.start(CHECK_INTERVAL_MS)
     app.aboutToQuit.connect(lambda: _stop_updater(updater))
     app.aboutToQuit.connect(controller.shutdown)

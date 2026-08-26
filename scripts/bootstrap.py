@@ -40,13 +40,10 @@ def main() -> None:
     candidate = Path(python_path)
     if not candidate.is_file():
         fail(
-            f'pythonPath "{python_path}" does not exist. '
-            'Fix it or set it to "" for auto-detection.'
+            f'pythonPath "{python_path}" does not exist. Fix it or set it to "" for auto-detection.'
         )
     try:
-        result = subprocess.run(
-            [str(candidate), "-c", VALIDATE_SNIPPET], capture_output=True
-        )
+        result = subprocess.run([str(candidate), "-c", VALIDATE_SNIPPET], capture_output=True)
     except OSError as exc:
         fail(f'pythonPath "{python_path}" could not be executed: {exc}')
         return

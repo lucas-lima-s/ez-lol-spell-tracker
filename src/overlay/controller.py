@@ -45,9 +45,7 @@ class OverlayController(QObject):
         self._clock = GameClock()
         self._board = SpellTimerBoard(self._clock)
         self._haste = HasteTracker()
-        self._window = OverlayWindow(
-            config, self._board, haste=self._haste, monotonic=monotonic
-        )
+        self._window = OverlayWindow(config, self._board, haste=self._haste, monotonic=monotonic)
         self._in_game = False
         self._preview_user = False
         self._preview_settings = False

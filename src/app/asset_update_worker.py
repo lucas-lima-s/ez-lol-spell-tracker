@@ -24,6 +24,4 @@ class AssetUpdateWorker(QThread):
         except Exception as exc:
             logger.warning("Asset update check failed: %s", exc)
             return
-        self.finished_update.emit(
-            report.version, report.downloaded, len(report.failures)
-        )
+        self.finished_update.emit(report.version, report.downloaded, len(report.failures))

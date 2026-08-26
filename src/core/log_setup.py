@@ -27,11 +27,11 @@ def setup_logging(
         encoding="utf-8",
     )
     file_handler.setFormatter(formatter)
-    setattr(file_handler, "_ezst_managed", True)
+    file_handler._ezst_managed = True
     root.addHandler(file_handler)
     if sys.stderr is not None:
         console_handler = logging.StreamHandler()
         console_handler.setFormatter(formatter)
-        setattr(console_handler, "_ezst_managed", True)
+        console_handler._ezst_managed = True
         root.addHandler(console_handler)
     root.setLevel(level)

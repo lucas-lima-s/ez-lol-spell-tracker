@@ -51,9 +51,7 @@ def test_preview_timers_work_via_synthetic_clock(qapp, tmp_path, fixture_static)
     assert controller._board.remaining(0, 0, state["now"]) == 300.0
 
 
-def test_game_started_replaces_preview_and_shows(
-    qapp, tmp_path, fixture_static, monkeypatch
-):
+def test_game_started_replaces_preview_and_shows(qapp, tmp_path, fixture_static, monkeypatch):
     state = {"now": 50.0}
     controller, _ = _controller(tmp_path, fixture_static, state)
     monkeypatch.setattr(
@@ -68,9 +66,7 @@ def test_game_started_replaces_preview_and_shows(
     assert controller.window().enemies()[0].champion_id == "Fiddlesticks"
 
 
-def test_game_started_while_alt_tabbed_does_not_flash(
-    qapp, tmp_path, fixture_static, monkeypatch
-):
+def test_game_started_while_alt_tabbed_does_not_flash(qapp, tmp_path, fixture_static, monkeypatch):
     state = {"now": 50.0}
     controller, _ = _controller(tmp_path, fixture_static, state)
     monkeypatch.setattr(win32, "get_foreground_window_title", lambda: "Notepad")
@@ -123,9 +119,7 @@ def test_preview_ignores_foreground(qapp, tmp_path, fixture_static, monkeypatch)
     assert controller.window().isVisible()
 
 
-def test_settings_open_enables_preview_and_close_keeps_user_preview(
-    qapp, tmp_path, fixture_static
-):
+def test_settings_open_enables_preview_and_close_keeps_user_preview(qapp, tmp_path, fixture_static):
     state = {"now": 50.0}
     controller, _ = _controller(tmp_path, fixture_static, state)
     controller.set_settings_open(True)
@@ -154,9 +148,7 @@ def test_setters_persist_to_config(qapp, tmp_path, fixture_static):
     assert controller.window().is_locked()
 
 
-def test_hide_from_capture_failure_persists_false(
-    qapp, tmp_path, fixture_static, monkeypatch
-):
+def test_hide_from_capture_failure_persists_false(qapp, tmp_path, fixture_static, monkeypatch):
     state = {"now": 50.0}
     controller, config = _controller(tmp_path, fixture_static, state)
     monkeypatch.setattr(win32, "set_capture_exclusion", lambda hwnd, value: False)
@@ -218,9 +210,7 @@ def test_hotkey_registered_from_config_on_init(qapp, tmp_path, fixture_static):
     assert controller._hotkey.registered == ["F8"]
 
 
-def test_user_hidden_toggle_hides_even_in_game(
-    qapp, tmp_path, fixture_static, monkeypatch
-):
+def test_user_hidden_toggle_hides_even_in_game(qapp, tmp_path, fixture_static, monkeypatch):
     state = {"now": 50.0}
     controller, _ = _controller(tmp_path, fixture_static, state)
     monkeypatch.setattr(
@@ -264,9 +254,7 @@ def test_set_hotkey_empty_unregisters(qapp, tmp_path, fixture_static):
     assert controller._hotkey.unregistered >= 1
 
 
-def test_resolution_change_reloads_profile(
-    qapp, tmp_path, fixture_static, monkeypatch
-):
+def test_resolution_change_reloads_profile(qapp, tmp_path, fixture_static, monkeypatch):
     state = {"now": 50.0}
     controller, config = _controller(tmp_path, fixture_static, state)
     controller.window().persist_scale(1.3)

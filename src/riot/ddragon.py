@@ -141,7 +141,5 @@ def update_snapshot(
         json.dumps(slim, ensure_ascii=False, indent=2).encode("utf-8"),
     )
     write_bytes(DATA_VERSION_FILE, version.encode("utf-8"))
-    logger.info(
-        "Snapshot updated to %s (%d files downloaded)", version, report.downloaded
-    )
+    logger.info("Snapshot updated to %s (%d files downloaded)", version, report.downloaded)
     return report

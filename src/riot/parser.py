@@ -107,9 +107,7 @@ def _build_spell_slot(payload: dict, static: StaticData) -> SpellSlot:
     if spell_id is None:
         if raw or display_name:
             logger.warning("Unknown summoner spell: %r", raw or display_name)
-        return SpellSlot(
-            spell_id="", display_name=display_name, base_cooldown=0.0, icon_file=""
-        )
+        return SpellSlot(spell_id="", display_name=display_name, base_cooldown=0.0, icon_file="")
     info = static.spell(spell_id)
     assert info is not None
     return SpellSlot(

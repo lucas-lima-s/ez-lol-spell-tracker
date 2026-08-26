@@ -130,9 +130,7 @@ def test_champion_cell_click_starts_drag_not_timer(qapp, tmp_path):
     )
     assert window.is_dragging()
     assert all(
-        board.remaining(row, slot, state["now"]) == 0.0
-        for row in range(5)
-        for slot in (0, 1)
+        board.remaining(row, slot, state["now"]) == 0.0 for row in range(5) for slot in (0, 1)
     )
 
 

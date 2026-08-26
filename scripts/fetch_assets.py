@@ -21,8 +21,7 @@ def main() -> None:
         for failure in report.failures:
             print(f"FAILED: {failure}")
         print(
-            f"Snapshot INCOMPLETE: {len(report.failures)} downloads failed, "
-            "data files not updated"
+            f"Snapshot INCOMPLETE: {len(report.failures)} downloads failed, data files not updated"
         )
         sys.exit(1)
     print("Snapshot complete")

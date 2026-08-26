@@ -42,17 +42,13 @@ def set_enabled(enabled: bool) -> bool:
             with winreg.CreateKeyEx(
                 winreg.HKEY_CURRENT_USER, RUN_KEY_PATH, 0, winreg.KEY_SET_VALUE
             ) as key:
-                winreg.SetValueEx(
-                    key, RUN_VALUE_NAME, 0, winreg.REG_SZ, launch_command()
-                )
+                winreg.SetValueEx(key, RUN_VALUE_NAME, 0, winreg.REG_SZ, launch_command())
             return True
         except OSError as exc:
             logger.warning("Could not enable autostart: %s", exc)
             return False
     try:
-        with winreg.OpenKey(
-            winreg.HKEY_CURRENT_USER, RUN_KEY_PATH, 0, winreg.KEY_SET_VALUE
-        ) as key:
+        with winreg.OpenKey(winreg.HKEY_CURRENT_USER, RUN_KEY_PATH, 0, winreg.KEY_SET_VALUE) as key:
             winreg.DeleteValue(key, RUN_VALUE_NAME)
         return True
     except FileNotFoundError:

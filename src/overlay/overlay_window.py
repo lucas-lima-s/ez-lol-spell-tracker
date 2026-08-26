@@ -94,9 +94,7 @@ class OverlayWindow(QWidget):
 
     def set_enemies(self, enemies: list[Enemy]) -> None:
         incoming = list(enemies[:5])
-        if [e.champion_id for e in incoming] != [
-            e.champion_id for e in self._enemies
-        ]:
+        if [e.champion_id for e in incoming] != [e.champion_id for e in self._enemies]:
             self._pixmaps.clear()
             self._gray_pixmaps.clear()
         self._enemies = incoming
@@ -211,10 +209,7 @@ class OverlayWindow(QWidget):
 
     def _is_on_screen(self, point: QPoint) -> bool:
         rect = QRect(point, self.size())
-        return any(
-            screen.availableGeometry().intersects(rect)
-            for screen in QApplication.screens()
-        )
+        return any(screen.availableGeometry().intersects(rect) for screen in QApplication.screens())
 
     def _persist_position(self) -> None:
         point = self.frameGeometry().topLeft()
@@ -283,7 +278,8 @@ class OverlayWindow(QWidget):
         font.setPixelSize(max(11, int(13 * s)))
         painter.setFont(font)
         painter.setPen(QColor(255, 255, 255, 200 if self._locked else 140))
-        painter.drawText(rect, int(Qt.AlignmentFlag.AlignCenter), "\U0001f512" if self._locked else "\U0001f513")
+        glyph = "\U0001f512" if self._locked else "\U0001f513"
+        painter.drawText(rect, int(Qt.AlignmentFlag.AlignCenter), glyph)
         painter.restore()
 
     def _pixmap(self, path: Path) -> QPixmap | None:
@@ -317,9 +313,7 @@ class OverlayWindow(QWidget):
                 self._gray_pixmaps[key] = cached
         return cached if not cached.isNull() else None
 
-    def _paint_champion(
-        self, painter: QPainter, rect: QRect, enemy: Enemy, s: float
-    ) -> None:
+    def _paint_champion(self, painter: QPainter, rect: QRect, enemy: Enemy, s: float) -> None:
         clip = QPainterPath()
         clip.addEllipse(QRectF(rect))
         pixmap = None
@@ -346,9 +340,7 @@ class OverlayWindow(QWidget):
         if row >= 0:
             self._paint_haste_badges(painter, rect, row, s)
 
-    def _paint_haste_badges(
-        self, painter: QPainter, rect: QRect, row: int, s: float
-    ) -> None:
+    def _paint_haste_badges(self, painter: QPainter, rect: QRect, row: int, s: float) -> None:
         size = max(6, int(9 * s))
         painter.save()
         painter.setPen(Qt.PenStyle.NoPen)
@@ -378,9 +370,7 @@ class OverlayWindow(QWidget):
         pixmap = None
         if slot.icon_file:
             icon_path = SPELLS_DIR / slot.icon_file
-            pixmap = (
-                self._gray_pixmap(icon_path) if on_cooldown else self._pixmap(icon_path)
-            )
+            pixmap = self._gray_pixmap(icon_path) if on_cooldown else self._pixmap(icon_path)
         painter.save()
         painter.setClipPath(clip)
         if pixmap is not None:
@@ -404,19 +394,14 @@ class OverlayWindow(QWidget):
             font.setPixelSize(max(10, int(16 * s)))
             painter.setFont(font)
             painter.setPen(QColor(0, 0, 0, 200))
-            painter.drawText(
-                rect.adjusted(1, 1, 1, 1), int(Qt.AlignmentFlag.AlignCenter), text
-            )
+            painter.drawText(rect.adjusted(1, 1, 1, 1), int(Qt.AlignmentFlag.AlignCenter), text)
             painter.setPen(QColor(255, 255, 255, 235))
             painter.drawText(rect, int(Qt.AlignmentFlag.AlignCenter), text)
         painter.restore()
 
     def mousePressEvent(self, event) -> None:
         pos = event.position().toPoint()
-        if (
-            event.button() == Qt.MouseButton.LeftButton
-            and self.lock_rect().contains(pos)
-        ):
+        if event.button() == Qt.MouseButton.LeftButton and self.lock_rect().contains(pos):
             self._toggle_lock()
             self.update()
             event.accept()
@@ -435,9 +420,7 @@ class OverlayWindow(QWidget):
                     event.accept()
                     return
         if event.button() == Qt.MouseButton.LeftButton and not self._locked:
-            self._drag_offset = (
-                event.globalPosition().toPoint() - self.frameGeometry().topLeft()
-            )
+            self._drag_offset = event.globalPosition().toPoint() - self.frameGeometry().topLeft()
             self.drag_state_changed.emit(True)
             self.update()
             event.accept()
@@ -445,19 +428,14 @@ class OverlayWindow(QWidget):
         super().mousePressEvent(event)
 
     def mouseMoveEvent(self, event) -> None:
-        if self._drag_offset is not None and (
-            event.buttons() & Qt.MouseButton.LeftButton
-        ):
+        if self._drag_offset is not None and (event.buttons() & Qt.MouseButton.LeftButton):
             self.move(event.globalPosition().toPoint() - self._drag_offset)
             event.accept()
             return
         super().mouseMoveEvent(event)
 
     def mouseReleaseEvent(self, event) -> None:
-        if (
-            event.button() == Qt.MouseButton.LeftButton
-            and self._drag_offset is not None
-        ):
+        if event.button() == Qt.MouseButton.LeftButton and self._drag_offset is not None:
             self._drag_offset = None
             self._persist_position()
             self.drag_state_changed.emit(False)
@@ -496,9 +474,7 @@ class OverlayWindow(QWidget):
 
     def _cooldown_for(self, enemy: Enemy, slot: SpellSlot, row: int) -> float:
         game_time = self._board.game_now(self._monotonic()) or 0.0
-        base = base_cooldown_for(
-            slot.spell_id, slot.base_cooldown, enemy.level, game_time
-        )
+        base = base_cooldown_for(slot.spell_id, slot.base_cooldown, enemy.level, game_time)
         cooldown = effective_cooldown(base, self._haste.haste(row))
         offset = float(self._config.get("click_cast_offset") or 0)
         return max(0.0, cooldown - offset)

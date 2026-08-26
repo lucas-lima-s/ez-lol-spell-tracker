@@ -8,9 +8,7 @@ STRINGS = {
     "error.already_running.title": "EzSpellTracker",
     "error.already_running.text": "O EzSpellTracker já está em execução.",
     "error.no_tray.title": "EzSpellTracker",
-    "error.no_tray.text": (
-        "Bandeja do sistema indisponível. O aplicativo não pode iniciar."
-    ),
+    "error.no_tray.text": ("Bandeja do sistema indisponível. O aplicativo não pode iniciar."),
     "error.startup.title": "EzSpellTracker",
     "error.startup.text": (
         "Falha ao iniciar: arquivos de dados ausentes ou corrompidos. "
@@ -23,13 +21,9 @@ STRINGS = {
     "settings.locked": "Bloquear posição do overlay",
     "settings.reset_position": "Redefinir posição",
     "settings.hide_from_capture": "Ocultar de gravações e capturas",
-    "settings.hide_from_capture_unsupported": (
-        "Indisponível nesta versão do Windows."
-    ),
+    "settings.hide_from_capture_unsupported": ("Indisponível nesta versão do Windows."),
     "settings.start_with_windows": "Iniciar com o Windows",
-    "settings.start_with_windows_failed": (
-        "Não foi possível alterar a inicialização automática."
-    ),
+    "settings.start_with_windows_failed": ("Não foi possível alterar a inicialização automática."),
     "settings.help.controls": (
         "Clique esquerdo no ícone inicia o timer; clique direito reseta. "
         "Roda do mouse sobre o ícone ajusta o timer em ±5 s. "
@@ -42,9 +36,7 @@ STRINGS = {
     "settings.resolution_profile": "Perfil de resolução atual:",
     "settings.data_version": "Dados do patch:",
     "settings.hotkey": "Atalho mostrar/ocultar overlay",
-    "settings.hotkey_failed": (
-        "Não foi possível registrar o atalho (em uso por outro programa?)."
-    ),
+    "settings.hotkey_failed": ("Não foi possível registrar o atalho (em uso por outro programa?)."),
 }
 
 

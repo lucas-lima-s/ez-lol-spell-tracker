@@ -85,9 +85,7 @@ def test_same_version_fills_missing_only(sandbox, monkeypatch):
 def test_failure_keeps_old_data_files(sandbox, monkeypatch):
     monkeypatch.setattr(ddragon, "fetch", _fake_fetch())
     ddragon.update_snapshot()
-    monkeypatch.setattr(
-        ddragon, "fetch", _fake_fetch(fail_urls=("img/champion/Ahri.png",))
-    )
+    monkeypatch.setattr(ddragon, "fetch", _fake_fetch(fail_urls=("img/champion/Ahri.png",)))
     (sandbox / "champions" / "Ahri.png").unlink()
     old_version = (sandbox / "data" / "version.txt").read_text(encoding="utf-8")
     report = ddragon.update_snapshot(force=True)
@@ -99,9 +97,7 @@ def test_failure_keeps_old_data_files(sandbox, monkeypatch):
 def test_pem_not_refetched_when_present(sandbox, monkeypatch):
     monkeypatch.setattr(ddragon, "fetch", _fake_fetch())
     ddragon.update_snapshot()
-    monkeypatch.setattr(
-        ddragon, "fetch", _fake_fetch(fail_urls=("riotgames.pem",))
-    )
+    monkeypatch.setattr(ddragon, "fetch", _fake_fetch(fail_urls=("riotgames.pem",)))
     report = ddragon.update_snapshot()
     assert report.complete
 

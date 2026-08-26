@@ -137,7 +137,12 @@ def test_game_end_requires_consecutive_failures(qapp, fixture_static):
     watcher, started, ended = _watcher(fixture_static, client)
     watcher._tick()
     watcher._tick()
-    client.stats_results = [NotInGameError("hiccup"), STATS, NotInGameError("gone"), NotInGameError("gone")]
+    client.stats_results = [
+        NotInGameError("hiccup"),
+        STATS,
+        NotInGameError("gone"),
+        NotInGameError("gone"),
+    ]
     watcher._tick()
     assert ended == []
     watcher._tick()

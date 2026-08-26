@@ -35,9 +35,7 @@ def test_non_object_root_recovers_with_backup(tmp_path):
 
 def test_deep_merge_keeps_file_values_and_adds_new_defaults(tmp_path):
     path = tmp_path / "settings.json"
-    path.write_text(
-        json.dumps({"logLevel": "DEBUG", "custom": {"x": 1}}), encoding="utf-8"
-    )
+    path.write_text(json.dumps({"logLevel": "DEBUG", "custom": {"x": 1}}), encoding="utf-8")
     config = Config(path)
     assert config.get("logLevel") == "DEBUG"
     assert config.get("language") == "pt-BR"

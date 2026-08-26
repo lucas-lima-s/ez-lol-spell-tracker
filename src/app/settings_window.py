@@ -62,9 +62,7 @@ class SettingsWindow(QDialog):
 
         self.opacity_slider = QSlider(Qt.Orientation.Horizontal)
         self.opacity_slider.setRange(20, 100)
-        self.opacity_slider.setValue(
-            round(float(overlay_settings.get("opacity") or 0.9) * 100)
-        )
+        self.opacity_slider.setValue(round(float(overlay_settings.get("opacity") or 0.9) * 100))
         self.opacity_label = QLabel(f"{self.opacity_slider.value()}%")
         self.opacity_slider.valueChanged.connect(self._on_opacity_changed)
         self.opacity_slider.sliderReleased.connect(self._persist_sliders)
@@ -91,9 +89,7 @@ class SettingsWindow(QDialog):
         form.addRow(self.hotkey_warning)
 
         self.capture_check = QCheckBox(tr("settings.hide_from_capture"))
-        self.capture_check.setChecked(
-            bool(overlay_settings.get("hide_from_capture", False))
-        )
+        self.capture_check.setChecked(bool(overlay_settings.get("hide_from_capture", False)))
         self.capture_check.toggled.connect(self._on_capture_toggled)
         form.addRow(self.capture_check)
         self.capture_warning = QLabel(tr("settings.hide_from_capture_unsupported"))

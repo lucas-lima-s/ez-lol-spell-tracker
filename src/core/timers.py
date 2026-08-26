@@ -68,9 +68,7 @@ class SpellTimerBoard:
     def game_now(self, monotonic_now: float) -> float | None:
         return self._clock.now(monotonic_now)
 
-    def remaining(
-        self, enemy_index: int, slot_index: int, monotonic_now: float
-    ) -> float:
+    def remaining(self, enemy_index: int, slot_index: int, monotonic_now: float) -> float:
         expires = self._expires.get((enemy_index, slot_index))
         if expires is None:
             return 0.0

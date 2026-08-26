@@ -5,19 +5,13 @@ from src.core.log_setup import setup_logging
 
 
 def _managed_handlers():
-    return [
-        h
-        for h in logging.getLogger().handlers
-        if getattr(h, "_ezst_managed", False)
-    ]
+    return [h for h in logging.getLogger().handlers if getattr(h, "_ezst_managed", False)]
 
 
 def test_file_handler_configuration(tmp_path):
     setup_logging(logs_dir=tmp_path)
     file_handlers = [
-        h
-        for h in _managed_handlers()
-        if isinstance(h, logging.handlers.RotatingFileHandler)
+        h for h in _managed_handlers() if isinstance(h, logging.handlers.RotatingFileHandler)
     ]
     assert len(file_handlers) == 1
     handler = file_handlers[0]
