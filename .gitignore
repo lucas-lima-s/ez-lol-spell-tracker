@@ -14,4 +14,4 @@ dist/
 .venv/
 .ruff_cache/
 *.spec
-docs/*.tmp.png
+.github/images/*.tmp.png

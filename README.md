@@ -5,7 +5,7 @@
 An injection-free League of Legends overlay that tracks enemy summoner-spell cooldowns from
 Riot's local Live Client Data API.
 
-![Synthetic overlay mockup showing five enemy champions with summoner-spell cooldown timers](docs/overlay-mock.png)
+![Synthetic overlay mockup showing five enemy champions with summoner-spell cooldown timers](.github/images/overlay-mock.png)
 
 *The image above is a synthetic render produced offline by `scripts/render_mockup.py` from the
 app's own widget code, not a live game capture.*

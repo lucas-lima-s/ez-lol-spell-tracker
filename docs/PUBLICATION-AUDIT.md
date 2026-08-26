@@ -14,12 +14,13 @@ ls-files`) before this pass.
 | Dangling product name: the public name with a bare "V2" suffix appended, with no public v1 ever released | `src/main.py:77,93`, `src/app/autostart.py:14`, `build_release.bat:37,40,50,58`, `tests/test_autostart.py:88-89` | Renamed to the plain public name everywhere; `_ezst_managed` left untouched (it is an internal attribute name, not a product-name string). Baked into the initial commit. This document deliberately does not reprint the old dangling name. |
 | Riot art and certificate redistributed with no disclaimer | `assets/champions/*.png` (195), `assets/spells/*.png` (16), `assets/certs/riotgames.pem` | README carries the verbatim Riot legal disclaimer plus a statement that art comes from Data Dragon and the app only ever talks to Riot's official local endpoint and Data Dragon (commit "Add MIT license and English README"). |
 | No repo description / topics | `gh repo view` (repo did not exist yet) | Set at `gh repo create` time: description and 5 topics (`league-of-legends`, `overlay`, `pyside6`, `riot-api`, `windows`). Tracked as a GitHub-side step, not a file in this tree. |
+| A recursive plain-text scan of `docs/` (checking for stray non-English prose, i.e. Latin-1 letters with diacritics) also reads every binary file underneath it; a PNG's compressed byte stream statistically contains the same two-byte sequences those diacritic letters encode to in UTF-8 (confirmed: the 96 KB mockup alone produced 9,049 incidental hits, and even a trivial 98-byte flat PNG produced one), so no image can ever live under `docs/` and pass that scan | `docs/overlay-mock.png` (as it was originally placed) tripped a recursive grep for diacritic bytes across `docs/` | Moved the rendered mockup to `.github/images/overlay-mock.png`, a directory outside both `docs/` (kept text-only) and `assets/` (kept to runtime data the release build copies next to the executable). `README.md` and `scripts/render_mockup.py`'s `--out` default were updated to the new path. |
 
 ## Negative results (checked, nothing found)
 
 - `git ls-files` contains **zero** entries under `lib/`, `build/`, `dist/`, `logs/`,
   `.pytest_cache/`, and `config/settings.json`. `.gitignore` already covered all of them before
   this pass and was left as-is except for the additions in the packaging step
-  (`.venv/`, `.ruff_cache/`, `*.spec`, `docs/*.tmp.png`).
+  (`.venv/`, `.ruff_cache/`, `*.spec`, `.github/images/*.tmp.png`).
 - `.gitattributes` (`* text=auto`, `*.bat text eol=crlf`, `*.png binary`) was already correct and
   needed no change.

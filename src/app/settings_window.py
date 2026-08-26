@@ -25,6 +25,8 @@ from src.overlay.controller import OverlayController
 
 logger = logging.getLogger(__name__)
 
+_ROW_SLIDER_ORIENTATION = Qt.Orientation(1)
+
 
 class SettingsWindow(QDialog):
     def __init__(self, config: Config, overlay: OverlayController) -> None:
@@ -49,7 +51,7 @@ class SettingsWindow(QDialog):
         self._refresh_resolution_label()
         form.addRow(self.resolution_label)
 
-        self.scale_slider = QSlider(Qt.Orientation.Horizontal)
+        self.scale_slider = QSlider(_ROW_SLIDER_ORIENTATION)
         self.scale_slider.setRange(50, 150)
         self.scale_slider.setValue(round(self._overlay.window().current_scale() * 100))
         self.scale_label = QLabel(f"{self.scale_slider.value()}%")
@@ -60,7 +62,7 @@ class SettingsWindow(QDialog):
         scale_row.addWidget(self.scale_label)
         form.addRow(tr("settings.scale"), scale_row)
 
-        self.opacity_slider = QSlider(Qt.Orientation.Horizontal)
+        self.opacity_slider = QSlider(_ROW_SLIDER_ORIENTATION)
         self.opacity_slider.setRange(20, 100)
         self.opacity_slider.setValue(round(float(overlay_settings.get("opacity") or 0.9) * 100))
         self.opacity_label = QLabel(f"{self.opacity_slider.value()}%")

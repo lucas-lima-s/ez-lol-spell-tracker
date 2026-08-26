@@ -130,7 +130,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(
         description="Render a synthetic ez-spell-tracker overlay mockup"
     )
-    parser.add_argument("--out", default="docs/overlay-mock.png")
+    parser.add_argument("--out", default=".github/images/overlay-mock.png")
     parser.add_argument("--scale", type=float, default=1.0)
     args = parser.parse_args()
 
