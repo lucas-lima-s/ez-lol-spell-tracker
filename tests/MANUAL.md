@@ -1,109 +1,126 @@
-# Checklist de validação manual
+# Manual validation checklist
 
-> Pendências registradas em 2026-06-11 (pedido do usuário: validações ao vivo adiadas).
-> Marcar cada item ao validar. Itens v0.2 e v1.0 podem ser validados juntos.
+> These checks require a live League of Legends client (or Practice Tool) and cannot be
+> automated. Check off each item as it is validated.
 
-## v0.2 — Validação ao vivo da integração Riot (PENDENTE)
+## Pending validations overview
 
-- [ ] Abrir o app (`run.bat`), criar Practice Tool com 5 bots inimigos → `logs\app.log` mostra
-      `Game detected` e 1 linha por inimigo com campeão (id canônico) + spells corretos em
-      cliente pt-BR.
-- [ ] Conferir no log se o `activePlayer` real expôs `riotId` (questão aberta do sample antigo).
-- [ ] Practice Tool sem bots → warning "Game started with no enemies on roster".
-- [ ] Sair da partida → `Game ended` em ~6 s.
+The automated test suite passes, but the following live validations are still outstanding:
 
-## v1.0 — Preview e posicionamento
+- [ ] **Live roster** -- Practice Tool roster validation with 5 bots on a Portuguese client;
+      confirm `riotId` on the real `activePlayer`.
+- [ ] **Real match** -- full manual checklist: real match at 2560x1440 Borderless, NOACTIVATE
+      focus test (Notepad and in-game), pause freezing the timers, capture exclusion verified
+      against OBS, autostart across a logoff/logon, exclusive-fullscreen behaviour (currently an
+      open question).
+- [ ] **UI features** -- per-resolution profiles, lock icon, show/hide hotkey (default F8),
+      opacity.
+- [ ] **Background asset updates** -- background asset auto-update (delete a sprite / roll back
+      `version.txt` and confirm re-download; version label in settings).
+- [ ] **Auto-adjusted cooldowns** -- boots detected via the API (blue dot), Cosmic Insight manual
+      toggle (right-click on the portrait, yellow dot), mouse wheel +-5s, click compensation,
+      Smite 90s, Unleashed Teleport after 10:00. Constants checked against the wiki on
+      2026-06-11 -- re-check per patch.
 
-- [ ] Bandeja → "Mostrar overlay" exibe 5 linhas placeholder (Annie/Ahri/Garen/Lux/Teemo) com
-      sprites reais.
-- [ ] Arrastar o overlay reposiciona; posição persiste após fechar/reabrir o app.
-- [ ] Configurações → Bloquear posição impede arrasto; borda some quando travado.
-- [ ] Sliders de escala/opacidade aplicam ao vivo; Redefinir posição volta ao padrão.
-- [ ] Clique esquerdo num ícone inicia timer M:SS com ícone acinzentado; direito reseta.
+## Live roster
 
-## v1.0 — Foco (critério NOACTIVATE)
+- [ ] Open the app (`run.bat`), create a Practice Tool match with 5 enemy bots -> `logs\app.log`
+      shows `Game detected` and one line per enemy with champion (canonical id) and correct
+      spells on a Portuguese client.
+- [ ] Check the log for whether the real `activePlayer` exposed `riotId` (open question from the
+      old sample).
+- [ ] Practice Tool with no bots -> warning "Game started with no enemies on roster".
+- [ ] Leave the match -> `Game ended` within ~6s.
 
-- [ ] Teste do Notepad: digitar continuamente no Notepad e clicar em vários ícones do overlay
-      (preview) — o cursor de texto permanece no Notepad, a digitação não é interrompida e a
-      barra de título do Notepad continua com cor de janela ativa.
-- [ ] In-game: segurar comando de movimento / digitar no chat e clicar no overlay — o
-      personagem continua respondendo, o chat mantém o foco, o jogo nunca minimiza.
+## Overlay preview and positioning
 
-## v1.0 — Partida real (2560×1440, Borderless)
+- [ ] Tray -> "Show overlay" displays 5 placeholder rows (Annie/Ahri/Garen/Lux/Teemo) with real
+      sprites.
+- [ ] Dragging the overlay repositions it; the position persists after closing/reopening the app.
+- [ ] Settings -> Lock position prevents dragging; the border disappears when locked.
+- [ ] Scale/opacity sliders apply live; Reset position returns to the default.
+- [ ] Left-click on an icon starts a M:SS timer with a greyed-out icon; right-click resets it.
+- [ ] Opacity slider applies live to the overlay and persists.
 
-- [ ] Overlay aparece sozinho após o loading e some no fim da partida.
-- [ ] 5 inimigos corretos (cliente pt-BR), timers corretos comparados a um cronômetro.
-- [ ] Pause (Practice Tool) congela os timers; despause retoma.
-- [ ] Alt-tab esconde o overlay; voltar ao jogo reexibe; overlay permanece por cima do jogo
-      durante toda a partida (heartbeat).
-- [ ] Testar também em Fullscreen exclusivo e anotar o resultado aqui (questão aberta do
-      roadmap): ___________
+## Focus (NOACTIVATE)
 
-## v1.0.1 — Features de UI (pedido de 2026-06-11)
+- [ ] Notepad test: type continuously in Notepad and click several overlay icons (preview) -- the
+      text cursor stays in Notepad, typing is not interrupted, and Notepad's title bar keeps the
+      active-window color.
+- [ ] In-game: hold a movement command / type in chat and click the overlay -- the character keeps
+      responding, chat keeps focus, the game never minimizes.
 
-### Config por resolução
-- [ ] Posicionar/escalar o overlay em 2560×1440; mudar a resolução do Windows (ou do jogo em
-      Borderless) para 1920×1080 → overlay recarrega posição/escala do perfil da nova
-      resolução (default na primeira vez); voltar para 2560×1440 → posição/escala originais
-      restauradas sem ajuste manual.
-- [ ] Janela de configurações mostra "Perfil de resolução atual: <WxH>" correto.
-- [ ] `config/settings.json` guarda perfis separados em `overlay.profiles`.
+## Real match
 
-### Ícone de cadeado no overlay
-- [ ] Cadeado aparece no topo direito do overlay (aberto = destravado, com borda; fechado =
-      travado, sem borda).
-- [ ] Clique no cadeado IN-GAME trava/destrava sem roubar o foco do jogo.
-- [ ] Travado: arrasto não move o overlay; cliques nas spells continuam funcionando.
-- [ ] Checkbox "Bloquear posição" nas configurações reflete o estado ao clicar no cadeado
-      (e vice-versa).
+- [ ] Overlay appears on its own after loading and disappears at the end of the match.
+- [ ] 5 correct enemies (Portuguese client), timers correct compared against a stopwatch.
+- [ ] Pause (Practice Tool) freezes the timers; unpausing resumes them.
+- [ ] Alt-tab hides the overlay; returning to the game shows it again; the overlay stays on top of
+      the game for the whole match (heartbeat).
+- [ ] Also test exclusive fullscreen and record the result here (open question): ___________
 
-### Hotkey mostrar/ocultar
-- [ ] Com o default F8: pressionar IN-GAME (jogo com foco) esconde o overlay; pressionar de
-      novo mostra. Funciona também no preview.
-- [ ] Trocar o atalho nas configurações (ex.: Ctrl+F9) → novo atalho funciona imediatamente e
-      persiste após reiniciar o app.
-- [ ] Atalho em conflito (registrado por outro app) → aviso aparece e o atalho anterior
-      continua valendo.
-- [ ] Novo jogo iniciando reseta o estado escondido (overlay volta a aparecer).
+## Per-resolution profiles
 
-### Opacidade (já existia — revalidar)
-- [ ] Slider de opacidade aplica ao vivo no overlay e persiste.
+- [ ] Position/scale the overlay at 2560x1440; change the Windows (or in-game Borderless)
+      resolution to 1920x1080 -> the overlay reloads position/scale from the new resolution's
+      profile (defaults on first use); switching back to 2560x1440 restores the original
+      position/scale with no manual adjustment.
+- [ ] The settings window shows the correct "Current resolution profile: <WxH>".
+- [ ] `config/settings.json` stores separate profiles under `overlay.profiles`.
 
-## v1.0 — Configurações gerais
+## Lock icon
 
-- [ ] "Ocultar de gravações e capturas": gravar com OBS/Xbox Game Bar → overlay invisível na
-      gravação, visível na tela.
-- [ ] "Iniciar com o Windows": logoff/logon → app sobe na bandeja sozinho.
+- [ ] The lock icon appears at the top-right of the overlay (open = unlocked, with border; closed
+      = locked, no border).
+- [ ] Clicking the lock IN-GAME locks/unlocks without stealing focus from the game.
+- [ ] Locked: dragging does not move the overlay; spell clicks keep working.
+- [ ] The "Lock position" checkbox in settings reflects the state when clicking the lock icon
+      (and vice versa).
 
-## v1.1 — Auto-update de assets (PENDENTE)
+## Global hotkey
 
-- [ ] Apagar um sprite de `assets/champions/` e abrir o app → sprite rebaixado sozinho em
-      segundos (log "Assets updated"/"already up to date").
-- [ ] Editar `assets/data/version.txt` para uma versão antiga → app rebaixa o snapshot
-      completo em background sem travar a UI.
-- [ ] Janela de configurações mostra "Dados do patch: <versão>".
+- [ ] With the default F8: pressing it IN-GAME (game focused) hides the overlay; pressing it
+      again shows it. Also works in preview mode.
+- [ ] Changing the shortcut in settings (e.g. Ctrl+F9) -> the new shortcut works immediately and
+      persists after restarting the app.
+- [ ] A conflicting shortcut (already registered by another app) -> a warning appears and the
+      previous shortcut keeps working.
+- [ ] Starting a new game resets the hidden state (the overlay reappears).
 
-## v2.0 — Cooldowns autoajustáveis (PENDENTE)
+## Capture exclusion and autostart
 
-- [ ] Practice Tool: comprar Botas Ionianas num bot inimigo → em até ~10 s o ponto AZUL
-      aparece no retrato e o próximo clique na spell usa cooldown reduzido (~9% menor;
-      Flash 300 s → ~273 s).
-- [ ] Clique direito no retrato alterna Inspiração Cósmica (ponto AMARELO) → Flash com
-      botas+runa ≈ 234 s (300/1,28). Conferir contra cronômetro.
-- [ ] Roda do mouse sobre um timer em andamento ajusta ±5 s por clique da roda.
-- [ ] "Compensação de clique atrasado" nas configurações (ex.: 5 s) → timer inicia já
-      descontado.
-- [ ] Smite: clique inicia 90 s (recarga real), não os 15 s do Data Dragon.
-- [ ] Teleport após 10:00 de jogo: clique usa cooldown do Unleashed (330–240 s conforme o
-      nível do inimigo — nível vem da API).
-- [ ] VERIFICAR NO PATCH ATUAL (valores hardcoded, conferidos no wiki em 2026-06-11):
-      Botas Ionianas = 10 de haste; Cosmic Insight = 18; Smite = 90 s; upgrade do TP = 10:00.
+- [ ] "Hide from recordings and captures": recording with OBS/Xbox Game Bar -> the overlay is
+      invisible in the recording, visible on screen.
+- [ ] "Start with Windows": logoff/logon -> the app comes up in the tray on its own.
 
-## v1.0 — Release autocontida
+## Background asset updates
 
-- [ ] `build_release.bat` gera `dist\EzSpellTracker\` (exe + `_internal\` + `assets\`).
-- [ ] Smoke local: rodar o exe num shell com `set PATH=C:\Windows;C:\Windows\System32` e
-      `set PYTHONPATH=` → bandeja sobe, settings abre, preview funciona, `logs\` e `config\`
-      criados ao lado do exe.
-- [ ] Critério real: copiar a pasta para máquina/VM/usuário Windows sem Python instalado e
-      repetir o smoke.
+- [ ] Delete a sprite from `assets/champions/` and open the app -> the sprite is re-downloaded on
+      its own within seconds (log "Assets updated"/"already up to date").
+- [ ] Edit `assets/data/version.txt` to an older version -> the app rolls the full snapshot
+      forward in the background without blocking the UI.
+- [ ] The settings window shows "Patch data: <version>".
+
+## Auto-adjusted cooldowns
+
+- [ ] Practice Tool: buy Ionian Boots of Lucidity on an enemy bot -> within ~10s the BLUE dot
+      appears on the portrait and the next spell click uses the reduced cooldown (~9% lower;
+      Flash 300s -> ~273s).
+- [ ] Right-click on the portrait toggles Cosmic Insight (YELLOW dot) -> Flash with boots+rune ~=
+      234s (300/1.28). Check against a stopwatch.
+- [ ] Mouse wheel over a running timer adjusts it +-5s per wheel click.
+- [ ] "Late-click compensation" in settings (e.g. 5s) -> the timer starts already discounted.
+- [ ] Smite: clicking starts a 90s timer (real recharge), not the 15s from Data Dragon.
+- [ ] Teleport after 10:00 of game time: clicking uses the Unleashed cooldown (330-240s depending
+      on the enemy's level -- level comes from the API).
+- [ ] CHECK AGAINST THE CURRENT PATCH (hardcoded values, checked against the wiki on 2026-06-11):
+      Ionian Boots = 10 haste; Cosmic Insight = 18; Smite = 90s; TP upgrade at 10:00.
+
+## Self-contained release
+
+- [ ] `build_release.bat` produces `dist\EzSpellTracker\` (exe + `_internal\` + `assets\`).
+- [ ] Local smoke test: run the exe in a shell with `set PATH=C:\Windows;C:\Windows\System32` and
+      `set PYTHONPATH=` -> the tray icon comes up, settings open, preview works, `logs\` and
+      `config\` are created next to the exe.
+- [ ] Real criterion: copy the folder to a machine/VM/Windows user without Python installed and
+      repeat the smoke test.

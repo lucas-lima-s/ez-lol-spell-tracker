@@ -2,7 +2,7 @@ from src.core import paths
 
 
 def test_project_root_is_repo_root():
-    assert (paths.PROJECT_ROOT / "ROADMAP.md").is_file()
+    assert (paths.PROJECT_ROOT / "pyproject.toml").is_file()
     assert (paths.PROJECT_ROOT / "run.bat").is_file()
 
 
