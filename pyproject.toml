@@ -1,5 +1,5 @@
 [project]
-name = "ez-spell-tracker"
+name = "ez-lol-spell-tracker"
 version = "1.1.0"
 description = "Enemy summoner-spell cooldown tracker for League of Legends"
 readme = "README.md"

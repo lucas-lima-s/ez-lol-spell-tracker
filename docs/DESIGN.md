@@ -1,4 +1,4 @@
-# ez-spell-tracker -- design notes
+# ez-lol-spell-tracker -- design notes
 
 ## Overview
 
@@ -81,7 +81,7 @@ reads.
 ## Folder structure
 
 ```
-ez-spell-tracker/
+ez-lol-spell-tracker/
 |-- run.bat                  # dev: PYTHONPATH=lib + python src/main.py
 |-- build_environment.bat    # dev: vendors deps into lib/
 |-- build_release.bat        # self-contained PyInstaller onedir build

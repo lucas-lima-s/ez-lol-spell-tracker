@@ -28,9 +28,9 @@ jobs:
         run: Copy-Item -Path assets -Destination dist/EzSpellTracker/assets -Recurse
 
       - name: Create release archive
-        run: Compress-Archive -Path dist/EzSpellTracker -DestinationPath ez-spell-tracker-${{ github.ref_name }}-win64.zip
+        run: Compress-Archive -Path dist/EzSpellTracker -DestinationPath ez-lol-spell-tracker-${{ github.ref_name }}-win64.zip
 
       - name: Publish release
         uses: softprops/action-gh-release@v2
         with:
-          files: ez-spell-tracker-${{ github.ref_name }}-win64.zip
+          files: ez-lol-spell-tracker-${{ github.ref_name }}-win64.zip

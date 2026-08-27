@@ -1,6 +1,6 @@
-# ez-spell-tracker
+# ez-lol-spell-tracker
 
-[![CI](https://github.com/lucas-lima-s/ez-spell-tracker/actions/workflows/ci.yml/badge.svg)](https://github.com/lucas-lima-s/ez-spell-tracker/actions/workflows/ci.yml)
+[![CI](https://github.com/lucas-lima-s/ez-lol-spell-tracker/actions/workflows/ci.yml/badge.svg)](https://github.com/lucas-lima-s/ez-lol-spell-tracker/actions/workflows/ci.yml)
 
 An injection-free League of Legends overlay that tracks enemy summoner-spell cooldowns from
 Riot's local Live Client Data API.
@@ -12,7 +12,7 @@ app's own widget code, not a live game capture.*
 
 ## What it does
 
-`ez-spell-tracker` detects the current match through Riot's Live Client Data API, populates the
+`ez-lol-spell-tracker` detects the current match through Riot's Live Client Data API, populates the
 five enemies with their champion and equipped summoner spells, and gives you one click per spell
 to start a cooldown timer anchored to the in-game clock. No game files are read or modified.
 
@@ -94,7 +94,7 @@ is language-neutral. Shipping an English UI is tracked as a deliberate follow-up
 
 ## Legal
 
-ez-spell-tracker isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot
+ez-lol-spell-tracker isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot
 Games or anyone officially involved in producing or managing Riot Games properties. Riot Games
 and all associated properties are trademarks or registered trademarks of Riot Games, Inc.
 
